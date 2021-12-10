@@ -17,5 +17,9 @@ module.exports = {
     'MYSQL_USER': 'root',
     'MYSQL_PASSWORD': '',
     'JWT_SECURE_STRING': ')H@McQfTjWnZr4u7x!A%C*F-JaNdRgUk'
-  }
+  },
+    webpack: (config, { isServer }) => {
+      if (!isServer) config.resolve.fallback.fs = false;
+      return config;
+    }
 }

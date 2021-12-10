@@ -43,30 +43,29 @@
 
 
 
-import formStyle from '../styles/FormBox.module.css'
-import {useEffect} from 'react'
+import formStyle from '../styles/FormBox.module.css';
+import {useEffect} from 'react';
 
 export default function FormBox({children}){
   useEffect(() =>{
     window.addEventListener('change', (event) =>{
-      console.log(event.target.value)
       if(event.target.value !== ""){
-        event.target.nextElementSibling.style.top = "-51px"
-        event.target.nextElementSibling.style.left = "8.5%"
-        event.target.nextElementSibling.style.color = "var(--main_font_color)"
-        event.target.nextElementSibling.style.textDecoration = "underline"
+        event.target.nextElementSibling.style.top = "-51px";
+        event.target.nextElementSibling.style.left = "8.5%";
+        event.target.nextElementSibling.style.color = "var(--main_font_color)";
+        event.target.nextElementSibling.style.textDecoration = "underline";
       }else{
-        event.target.nextElementSibling.style.top = "-28px"
-        event.target.nextElementSibling.style.left = "10%"
-        event.target.nextElementSibling.style.color = "gray"
-        event.target.nextElementSibling.style.textDecoration = "none"
+        event.target.nextElementSibling.style.top = "-28px";
+        event.target.nextElementSibling.style.left = "10%";
+        event.target.nextElementSibling.style.color = "gray";
+        event.target.nextElementSibling.style.textDecoration = "none";
       }
     })
   })
 
   return(
     <div className={formStyle.container}>
-    {children}
+      {children}
     </div>
   )
 }

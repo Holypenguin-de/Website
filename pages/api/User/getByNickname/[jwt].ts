@@ -2,15 +2,15 @@ import jwt from 'jsonwebtoken';
 import {User} from '../../../../apiclasses/User';
 
 export default async function handler(req, res){
-  // Get values out of jwt
+  // Get data out of the jwttoken
   const values = jwt.verify(req.query.jwt, process.env.JWT_SECURE_STRING);
 
-  // Create user object and pass the values trough
+  // Pass the data to the User Object
   const user = new User(values);
 
-  // get all users with ID
-  const result = await user.getById();
+  // Get all users
+  const result = await user.getByNickname();
 
-  // send all users as JSON
+  // send user as JSON
   res.status(200).json(result);
 }

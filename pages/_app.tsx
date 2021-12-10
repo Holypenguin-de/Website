@@ -1,10 +1,10 @@
-import '../styles/globals.css'
-import Header from '../components/Header'
-import Nav from '../components/Nav'
+import '../styles/globals.css';
+import Header from '../components/Header';
+import Nav from '../components/Nav';
 
-function MyApp({ Component, pageProps }) {
-  let left = {"item": ["home", "news", "games"]}
-  let right = {"item": ["signup", "login"]}
+export default function MyApp({ Component, pageProps }) {
+  let left = {"item": ["home", "news", "games"]};
+  let right = {"item": ["signup", "login"]};
   return (
     <>
       <Header/>
@@ -16,5 +16,3 @@ function MyApp({ Component, pageProps }) {
     </>
   )
 }
-
-export default MyApp
