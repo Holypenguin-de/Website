@@ -1,0 +1,14 @@
+.container{
+  margin: auto;
+  width: 95vw;
+  height: 50px;
+  border: 2px solid var(--main_color);
+}
+
+.container h1{
+  margin: 0px;
+  display: inline-block;
+  position: relative;
+  top: -15px;
+  text-shadow: var(--text_glow);
+}

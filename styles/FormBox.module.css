@@ -1,0 +1,150 @@
+.container{
+  min-width: 250px;
+  max-width: 500px;
+  height: max-content;
+  border: 2px solid white;
+  box-shadow: var(--box_shadow);
+  background: var(--second_color);
+  margin: 50px auto;
+  padding: 20px;
+
+}
+
+.container h1{
+  text-align: center;
+}
+
+.container form{
+  display: grid;
+}
+
+.container input{
+  background: none;
+  border: none;
+}
+
+@keyframes radius {
+  from{
+    width: 80%;
+    border-radius: none;
+  }
+  to{
+    width: 90%;
+    border-radius: 50px;
+  }
+}
+
+@keyframes position {
+  from{
+    left: 10%;
+    top: -28px;
+    color: gray;
+    text-decoration: none;
+  }
+  to{
+    left: 6%;
+    top: -51px;
+    color: var(--main_font_color);
+    text-decoration: underline;
+  }
+}
+
+@keyframes position2 {
+  from{
+    left: 8.5%;
+    top: -51px;
+
+  }
+  to{
+    left: 6%;
+    top: -51px;
+  }
+}
+
+.container input{
+  width: 80%;
+  margin: 10px auto;
+}
+
+.container span{
+  font-size: 17px;
+  margin: 0px;
+  color: gray;
+  position: relative;
+  left: 10%;
+  top: -28px;
+  pointer-events: none;
+}
+
+.container input{
+  margin: 0px auto;
+  width: 80%;
+  padding: 3px 8px;
+  border-left: 2px solid white;
+  border-bottom: 2px solid white;
+  height: 25px;
+}
+
+.container input:hover{
+  border-radius: 50px;
+  width: 90%;
+  animation-name: radius;
+  animation-duration: 0.5s;
+  outline: none;
+}
+
+.container input:hover + span{
+  left: 6%;
+  top: -51px;
+  color: var(--main_font_color);
+  text-decoration: underline;
+  animation-name: position;
+  animation-duration: 0.5s;
+}
+
+.container input:focus{
+  border-radius: 50px;
+  width: 90%;
+  animation-name: radius;
+  animation-duration: 0.5s;
+  outline: none;
+}
+
+.container input:focus + span{
+  left: 6%;
+  top: -51px;
+  color: var(--main_font_color);
+  text-decoration: underline;
+  animation-name: position;
+  animation-duration: 0.5s;
+}
+
+.container input[type="submit"]{
+  width: max-content;
+  height: max-content;
+  border: 2px solid white;
+  padding: 10px;
+  font-size: 15px;
+}
+
+.container input[type="submit"]:hover{
+  width: max-content;
+  border: 2px solid white;
+  border-radius: 50px;
+  animation: none;
+}
+
+.container ul{
+  position: relative;
+  left: 5%;
+  margin: 0px;
+  margin-bottom: 40px;
+}
+
+.container ul>li:first-child{
+  font-weight: bold;
+  list-style: none;
+  position: relative;
+  left: -13px;
+  text-decoration:underline;
+}
