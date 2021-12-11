@@ -64,8 +64,8 @@
   width: calc(60vw - 25px);
   height: 100vh;
   position: fixed;
-  top: 0px;
-  left: 0px;
+  top: -5px;
+  left: 5px;
   background:white;
   background:rgba(50,50,50,0.8);
 

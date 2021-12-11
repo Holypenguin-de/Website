@@ -6,8 +6,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import Sticky from 'react-sticky-el';
-import {BrowserView, MobileView} from 'react-device-detect';
-
+import {UserAgentProvider, UserAgent} from '@quentin-sommer/react-useragent';
+import {useEffect, useState} from 'react';
 import image from '../public/hamburger.svg';
 import navStyle from '../styles/Nav.module.css';
 
@@ -20,9 +20,15 @@ export default function Nav({left, right}, {props}){
     document.getElementById("links").style.display = "none";
   }
 
+  const [ua, setUA] = useState("");
+  useEffect(() => {
+    setUA(window.navigator.userAgent);
+  });
+
     return(
+      <UserAgentProvider ua={window.navigator.userAgent}>
       <div>
-        <MobileView>
+        <UserAgent mobile>
           <div>
             <button onClick={openMenu} className={navStyle.mobileButton}>
               <div className={navStyle.img}>
@@ -72,8 +78,8 @@ export default function Nav({left, right}, {props}){
                 </button>
               </nav>
           </div>
-        </MobileView>
-        <BrowserView>
+        </UserAgent>
+        <UserAgent computer>
         <Sticky>
           <nav className={navStyle.container}>
             <ul className={navStyle.left}>
@@ -111,7 +117,8 @@ export default function Nav({left, right}, {props}){
             </ul>
           </nav>
         </Sticky>
-        </BrowserView>
+        </UserAgent>
         </div>
+      </UserAgentProvider>
     )
 }

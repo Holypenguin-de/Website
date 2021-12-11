@@ -34,8 +34,7 @@ export async function jwtFetch({values, path}){
   // create fetch-options
   let fetchOptions = {
     method: 'POST',
-    headers: header,
-    redirect: 'follow'
+    headers: header
   };
 
   let res;

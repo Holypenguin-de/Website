@@ -2,12 +2,12 @@
 // You call it:
 // <Header/>
 
-import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
+import Head from 'next/head';
+import Image from 'next/image';
+import Link from 'next/link';
 
-import HeaderStyle from '../styles/Header.module.css'
-import image from '../public/logo.svg'
+import HeaderStyle from '../styles/Header.module.css';
+import image from '../public/logo.svg';
 
 export default function Header(){
   return(

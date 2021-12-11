@@ -49,16 +49,16 @@ import {useEffect} from 'react';
 export default function FormBox({children}){
   useEffect(() =>{
     window.addEventListener('change', (event) =>{
-      if(event.target.value !== ""){
-        event.target.nextElementSibling.style.top = "-51px";
-        event.target.nextElementSibling.style.left = "8.5%";
-        event.target.nextElementSibling.style.color = "var(--main_font_color)";
-        event.target.nextElementSibling.style.textDecoration = "underline";
+      if((event.target as HTMLInputElement).value !== ""){
+        ((event.target as HTMLElement).nextElementSibling as HTMLElement).style.top = "-51px";
+        ((event.target as HTMLElement).nextElementSibling as HTMLElement).style.left = "8.5%";
+        ((event.target as HTMLElement).nextElementSibling as HTMLElement).style.color = "var(--main_font_color)";
+        ((event.target as HTMLElement).nextElementSibling as HTMLElement).style.textDecoration = "underline";
       }else{
-        event.target.nextElementSibling.style.top = "-28px";
-        event.target.nextElementSibling.style.left = "10%";
-        event.target.nextElementSibling.style.color = "gray";
-        event.target.nextElementSibling.style.textDecoration = "none";
+        ((event.target as HTMLElement).nextElementSibling as HTMLElement).style.top = "-28px";
+        ((event.target as HTMLElement).nextElementSibling as HTMLElement).style.left = "10%";
+        ((event.target as HTMLElement).nextElementSibling as HTMLElement).style.color = "gray";
+        ((event.target as HTMLElement).nextElementSibling as HTMLElement).style.textDecoration = "none";
       }
     })
   })
