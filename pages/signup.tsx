@@ -1,11 +1,17 @@
 import FormBox from '../components/FormBox';
 import {jwtFetch} from '../config';
 import {useState} from 'react';
+import {useRouter} from 'next/router';
 export default function Signup(){
-  // TODO: Router.push to Loginpage
+  const router = useRouter();
   // Create info var
   let [info, setInfo] = useState("");
 
+  // function to prepare String
+  function prepareSQLMessage(message){
+    let string = message.split("key").pop().replace("'", '').replace("'", '').replace(" ", '');
+    return string;
+  }
   // Register user
   const register = async event => {
     event.preventDefault();
@@ -31,9 +37,15 @@ export default function Signup(){
         values: token,
         path: "/api/User/register"
       });
-
-      console.log(res);
-
+      if(JSON.parse(res).warningCount === 0){
+        router.push("/login");
+      } else if(prepareSQLMessage(JSON.parse(res).error.sqlMessage) === 'usr_Nickname'){
+        setInfo("Nickname already taken, please try another one!");
+      }else if(prepareSQLMessage(JSON.parse(res).error.sqlMessage) === 'usr_Email'){
+        setInfo("Email already taken, please try another one!");
+      }else{
+        setInfo('Something went wrong!');
+      }
     } else {
       setInfo("Passwords dont match!");
     }

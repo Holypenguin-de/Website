@@ -1,9 +1,12 @@
 import FormBox from '../components/FormBox';
+import {useRouter} from 'next/router';
 import {useState} from 'react';
 import {jwtFetch} from '../config'
 
 export default function Login(){
 
+  const router = useRouter();
+  
   // Create info var
   let [info, setInfo] = useState("");
 
@@ -23,7 +26,7 @@ export default function Login(){
       path: "/api/User/login"
     });
     if(res !== "Wrong password or nickname!"){
-      setInfo("You are in!")
+      router.push("/");
     } else {
       setInfo(res);
     }

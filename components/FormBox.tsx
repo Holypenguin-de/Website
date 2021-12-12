@@ -50,6 +50,7 @@ export default function FormBox({children}){
   useEffect(() =>{
     window.addEventListener('change', (event) =>{
       if((event.target as HTMLInputElement).value !== ""){
+        // Casts needed!!!
         ((event.target as HTMLElement).nextElementSibling as HTMLElement).style.top = "-51px";
         ((event.target as HTMLElement).nextElementSibling as HTMLElement).style.left = "8.5%";
         ((event.target as HTMLElement).nextElementSibling as HTMLElement).style.color = "var(--main_font_color)";
