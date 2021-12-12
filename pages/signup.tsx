@@ -1,5 +1,5 @@
 import FormBox from '../components/FormBox';
-import {jwtFetch} from '../config';
+import {jwtFetch} from '../lib/jwt';
 import {useState} from 'react';
 import {useRouter} from 'next/router';
 export default function Signup(){
@@ -39,9 +39,9 @@ export default function Signup(){
       });
       if(JSON.parse(res).warningCount === 0){
         router.push("/login");
-      } else if(prepareSQLMessage(JSON.parse(res).error.sqlMessage) === 'usr_Nickname'){
+      } else if(prepareSQLMessage(res.error.sqlMessage) === 'usr_Nickname'){
         setInfo("Nickname already taken, please try another one!");
-      }else if(prepareSQLMessage(JSON.parse(res).error.sqlMessage) === 'usr_Email'){
+      }else if(prepareSQLMessage(res.error.sqlMessage) === 'usr_Email'){
         setInfo("Email already taken, please try another one!");
       }else{
         setInfo('Something went wrong!');

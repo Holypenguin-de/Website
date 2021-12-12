@@ -11,6 +11,7 @@ CREATE TABLE Users(
   usr_Lastname Varchar(20) NOT NULL,
   usr_Password CHAR(128) NOT NULL,
   usr_Email Varchar(100) NOT NULL UNIQUE,
+  usr_Token CHAR(128) NOT NULL UNIQUE,
   usr_Admin BOOLEAN NOT NULL
 );
 

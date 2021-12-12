@@ -9,11 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/js-cookie": "^3.0.1",
     "@types/jsonwebtoken": "^8.5.6",
     "@types/react": "^17.0.37",
     "@types/react-sticky-el": "^1.0.3",
     "bcrypt": "^5.0.1",
     "fs": "^0.0.1-security",
+    "js-cookie": "^3.0.1",
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
     "net": "^1.0.2",

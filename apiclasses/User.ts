@@ -1,16 +1,18 @@
-import {executeQuery} from '../config';
+import {executeQuery} from '../lib/db';
 import bcrypt from 'bcrypt';
+import {randomString} from '../lib/random';
 
 export class User{
 
   // Variablen (DB-Attrebutes)
-  private usr_ID_PK;
-  private usr_Password;
-  private usr_Nickname;
-  private usr_Email;
-  private usr_Firstname;
-  private usr_Lastname;
-  private usr_Admin;
+  private usr_ID_PK:Number;
+  private usr_Password:string;
+  private usr_Nickname:string;
+  private usr_Email:string;
+  private usr_Firstname:string;
+  private usr_Lastname:string;
+  private usr_Admin:number;
+  private usr_Token:string;
 
   // Database
   private database = "Users";
@@ -24,6 +26,7 @@ export class User{
     this.usr_Firstname = values.usr_Firstname;
     this.usr_Lastname = values.usr_Lastname;
     this.usr_Admin = values.usr_Admin;
+    this.usr_Token = values.usr_Token;
   }
 
   // Get all existing User
@@ -69,8 +72,8 @@ export class User{
     try{
       const hash = bcrypt.hashSync(this.usr_Password, 12);
       const result = await executeQuery({
-        query: 'INSERT INTO ' + this.database + ' (usr_Nickname, usr_Firstname, usr_Lastname, usr_Password, usr_Email, usr_Admin) VALUES (?, ?, ?, ?, ?, ?)',
-        values: [this.usr_Nickname, this.usr_Firstname, this.usr_Lastname, hash, this.usr_Email, this.usr_Admin]
+        query: 'INSERT INTO ' + this.database + ' (usr_Nickname, usr_Firstname, usr_Lastname, usr_Password, usr_Email, usr_Admin, usr_Token) VALUES (?, ?, ?, ?, ?, ?, ?)',
+        values: [this.usr_Nickname, this.usr_Firstname, this.usr_Lastname, hash, this.usr_Email, this.usr_Admin, randomString(128)]
       });
       return result;
     } catch (e){
@@ -89,6 +92,18 @@ export class User{
       }
       return "Wrong password or nickname!";
     } catch (e){
+      return e;
+    }
+  }
+
+  public async checkSession(){
+    try{
+      const result = await executeQuery({
+        query: 'SELECT COUNT(*) AS row_Count FROM ' + this.database + ' WHERE usr_ID = ? AND usr_Token = ?',
+        values: [this.usr_ID_PK, this.usr_Token]
+      });
+      return result;
+    }catch (e){
       return e;
     }
   }

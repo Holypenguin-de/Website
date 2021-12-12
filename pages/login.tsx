@@ -1,12 +1,14 @@
 import FormBox from '../components/FormBox';
 import {useRouter} from 'next/router';
 import {useState} from 'react';
-import {jwtFetch} from '../config'
+import {jwtFetch} from '../lib/jwt';
+import cookies from 'js-cookie';
+import jwt from 'jsonwebtoken';
 
 export default function Login(){
 
   const router = useRouter();
-  
+
   // Create info var
   let [info, setInfo] = useState("");
 
@@ -26,6 +28,7 @@ export default function Login(){
       path: "/api/User/login"
     });
     if(res !== "Wrong password or nickname!"){
+      cookies.set("Session", jwt.sign(JSON.stringify(res), process.env.JWT_SECURE_STRING));
       router.push("/");
     } else {
       setInfo(res);
