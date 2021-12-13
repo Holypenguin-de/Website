@@ -1,6 +1,7 @@
 import '../styles/globals.css';
 import Header from '../components/Header';
 import Nav from '../components/Nav';
+import Footer from '../components/Footer';
 import cookies from 'js-cookie';
 import jwt from 'jsonwebtoken';
 
@@ -28,6 +29,8 @@ export default function MyApp({ Component, pageProps }) {
       <div className="content">
         <Component {...pageProps} />
       </div>
+
+      <Footer/>
     </>
   )
 }

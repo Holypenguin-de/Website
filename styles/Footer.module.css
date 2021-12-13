@@ -1,0 +1,38 @@
+.container{
+  margin: 0px auto;
+  padding: 20px;
+  height: max-content;
+
+  border: 2px solid white;
+
+  display: grid;
+  grid-column-gap: 10px;
+  grid-template-columns: repeat(auto-fill,max(270px));
+}
+
+.container>div{
+  width: 210px;
+  text-align: left;
+}
+
+.container>div>h1{
+  font-size: 25px;
+  text-decoration: underline;
+}
+
+.back{
+  margin: 100px, auto;
+  padding: 20px;
+  border: 2px solid white;
+  background: var(--second_color);
+}
+
+.back>div>a{
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.back>div{
+  text-align: center;
+}

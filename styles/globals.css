@@ -19,7 +19,6 @@
 
 html {
   background: var(--main_color);
-  height: 2000px;
 }
 
 * {
@@ -29,5 +28,6 @@ html {
 
 .content{
     width: 95vw;
+    min-height: 90vh;
     margin: auto;
 }
