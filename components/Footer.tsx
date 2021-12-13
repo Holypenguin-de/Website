@@ -42,7 +42,7 @@ export default function Footer(){
           </table>
         </div>
         <div>
-          <h1>Sozial Media:</h1>
+          <h1>Social Media:</h1>
           <table>
             <tr>
               <th>
