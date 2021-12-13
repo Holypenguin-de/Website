@@ -4,6 +4,7 @@
   height: 30px;
   border: 2px solid white;
   background: var(--second_color);
+  box-shadow: var(--box_black_shadow_bottom); 
 }
 
 .container ul{

@@ -1,3 +1,7 @@
+.wrapper{
+      box-shadow: var(--box_black_shadow_top);
+}
+
 .container{
   margin: 0px auto;
   padding: 20px;
@@ -8,6 +12,7 @@
   display: grid;
   grid-column-gap: 10px;
   grid-template-columns: repeat(auto-fill,max(270px));
+
 }
 
 .container>div{

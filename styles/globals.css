@@ -2,10 +2,15 @@
   /* COLORS */
   --main_color: #10101a;
   --second_color: #10101f;
+  --second_color: #212121;
   --main_font_color: white;
 
   /* TEXT GLOW */
   --text_glow: 0px 0px 5px white, 0px 0px 10px yellow;
+
+  /* Black Shadow */
+  --box_black_shadow_top: 5px -5px 10px 3px black;
+  --box_black_shadow_bottom: 5px 5px 10px 3px black;
 
   /* BOX GLOW */
   --box_shadow: 0px 0px 4px white, 0px 0px 10px yellow;

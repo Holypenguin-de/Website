@@ -3,7 +3,7 @@ import footerStyle from '../styles/Footer.module.css';
 export default function Footer(){
 
   return (
-    <>
+    <div className={footerStyle.wrapper}>
       <div className={footerStyle.back}>
         <div>
           <a href="#">
@@ -89,6 +89,6 @@ export default function Footer(){
           This site was written in <a target="_blank" rel="noreferrer" href="https://nextjs.org/">Nextjs</a>.
         </div>
       </div>
-    </>
+    </div>
   )
 }
