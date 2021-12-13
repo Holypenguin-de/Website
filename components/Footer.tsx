@@ -49,7 +49,7 @@ export default function Footer(){
                 YouTube:
               </th>
               <td>
-                <a target="_blank" href="https://www.youtube.com/channel/UCDZx4gbpl6H1gmMYr0UcIDw">
+                <a target="_blank" rel="noreferrer" href="https://www.youtube.com/channel/UCDZx4gbpl6H1gmMYr0UcIDw">
                   Svenum
                 </a>
               </td>
@@ -59,7 +59,7 @@ export default function Footer(){
                 Instagram:
               </th>
               <td>
-                <a target="_blank" href="https://www.instagram.com/svenum_graphics/">
+                <a target="_blank" rel="noreferrer" href="https://www.instagram.com/svenum_graphics/">
                   svenum_graphics
                 </a>
               </td>
@@ -69,11 +69,11 @@ export default function Footer(){
                 Discord:
               </th>
               <td>
-                <a target="_blank" href="https://discord.com/invite/8dfFCFY">
+                <a target="_blank" rel="noreferrer" href="https://discord.com/invite/8dfFCFY">
                   Svenum_Graphics
                 </a>
                 <br/>
-                <a target="_blank" href="https://discord.gg/xPer4qUubC">
+                <a target="_blank" rel="noreferrer" href="https://discord.gg/xPer4qUubC">
                   Holypenguin
                 </a>
               </td>
@@ -86,7 +86,7 @@ export default function Footer(){
         </div>
         <div>
           <h1>Info:</h1>
-          This site was written in <a target="_blank" href="https://nextjs.org/">Nextjs</a>.
+          This site was written in <a target="_blank" rel="noreferrer" href="https://nextjs.org/">Nextjs</a>.
         </div>
       </div>
     </>
