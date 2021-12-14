@@ -15,69 +15,73 @@ export default function Footer(){
         <div>
           <h1>Impressum:</h1>
           <table>
-            <tr>
-              <th>
-                Name:
-              </th>
-              <td>
-                Sven Ziegler
-              </td>
-            </tr>
-            <tr>
-              <th>
-                E-Mail:
-              </th>
-              <td>
-                sven.ziegler@hotmail.com
-              </td>
-            </tr>
-            <tr>
-              <th>
-                Country:
-              </th>
-              <td>
-                Germany
-              </td>
-            </tr>
+            <tbody>
+              <tr>
+                <th>
+                  Name:
+                </th>
+                <td>
+                  Sven Ziegler
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  E-Mail:
+                </th>
+                <td>
+                  sven.ziegler@hotmail.com
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  Country:
+                </th>
+                <td>
+                  Germany
+                </td>
+              </tr>
+              </tbody>
           </table>
         </div>
         <div>
           <h1>Social Media:</h1>
           <table>
-            <tr>
-              <th>
-                YouTube:
-              </th>
-              <td>
-                <a target="_blank" rel="noreferrer" href="https://www.youtube.com/channel/UCDZx4gbpl6H1gmMYr0UcIDw">
-                  Svenum
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <th>
-                Instagram:
-              </th>
-              <td>
-                <a target="_blank" rel="noreferrer" href="https://www.instagram.com/svenum_graphics/">
-                  svenum_graphics
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <th>
-                Discord:
-              </th>
-              <td>
-                <a target="_blank" rel="noreferrer" href="https://discord.com/invite/8dfFCFY">
-                  Svenum_Graphics
-                </a>
-                <br/>
-                <a target="_blank" rel="noreferrer" href="https://discord.gg/xPer4qUubC">
-                  Holypenguin
-                </a>
-              </td>
-            </tr>
+            <tbody>
+              <tr>
+                <th>
+                  YouTube:
+                </th>
+                <td>
+                  <a target="_blank" rel="noreferrer" href="https://www.youtube.com/channel/UCDZx4gbpl6H1gmMYr0UcIDw">
+                    Svenum
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  Instagram:
+                </th>
+                <td>
+                  <a target="_blank" rel="noreferrer" href="https://www.instagram.com/svenum_graphics/">
+                    svenum_graphics
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  Discord:
+                </th>
+                <td>
+                  <a target="_blank" rel="noreferrer" href="https://discord.com/invite/8dfFCFY">
+                    Svenum_Graphics
+                  </a>
+                  <br/>
+                  <a target="_blank" rel="noreferrer" href="https://discord.gg/xPer4qUubC">
+                    Holypenguin
+                  </a>
+                </td>
+              </tr>
+            </tbody>
           </table>
         </div>
         <div>

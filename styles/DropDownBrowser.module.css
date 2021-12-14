@@ -1,0 +1,27 @@
+.dropContent{
+  display: none;
+  position: absolute;
+  background: var(--second_color);
+  top: -2px;
+  box-shadow: var(--box_black_shadow_bottom);
+}
+
+.dropContent>*{
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 2px solid white;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.dropbtn:hover + .dropContent{
+  display: block;
+}
+
+.dropContent:hover{
+  display: block;
+}
+
+.dropContent>*:hover{
+  text-decoration: underline;
+}

@@ -7,11 +7,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Sticky from 'react-sticky-el';
 import {BrowserView, MobileView} from 'react-device-detect';
+import {useEffect, useState} from 'react';
 
 import image from '../public/hamburger.svg';
 import navStyle from '../styles/Nav.module.css';
+import DropDown from './DropDown';
 
-export default function Nav({left, right}, {props}){
+export default function Nav({left, right}){
   function openMenu(){
     document.getElementById("links").style.display = "block";
   }
@@ -19,6 +21,65 @@ export default function Nav({left, right}, {props}){
   function closeMenu(){
     document.getElementById("links").style.display = "none";
   }
+
+  let [leftMenu, setLeftMenu] = useState("");
+  let [rightMenu, setRightMenu] = useState("");
+
+  useEffect(()=>{
+    setLeftMenu(left.item.map((item)=>{
+      if(item !== "home"){
+      return(
+        <li key={item}>
+          <Link href={"/" + item}>
+            <a onClick={closeMenu}>
+              {item.toUpperCase()}
+            </a>
+          </Link>
+        </li>
+      )
+    } else {
+      return(
+        <li key={item}>
+          <Link href={"/"}>
+            <a onClick={closeMenu}>
+              {item.toUpperCase()}
+            </a>
+          </Link>
+        </li>
+      )
+    }
+  }));
+
+    setRightMenu(right.item.map((item)=>{
+      if(typeof(item) === "object"){
+        return(
+          <li key={[Object.keys(item)[0]].toString()}>
+            <DropDown title={[Object.keys(item)[0]].toString().toUpperCase()}>
+              {
+                item[Object.keys(item)[0]].map((subItem)=>{
+                  return(
+                      <Link key={subItem} href={"/" + [Object.keys(item)[0]] + "?id=" + subItem}>
+                        {subItem}
+                      </Link>
+                  );
+                })
+              }
+            </DropDown>
+          </li>
+        );
+      }else{
+        return(
+          <li key={item}>
+            <Link href={"/" + item}>
+              <a onClick={closeMenu}>
+                {item.toUpperCase()}
+              </a>
+            </Link>
+          </li>
+        );
+      }
+    }));
+  }, [left.item, right.item]);
 
     return(
       <div>
@@ -31,42 +92,10 @@ export default function Nav({left, right}, {props}){
             </button>
               <nav className={navStyle.links} id="links">
                 <ul>
-                  {left.item.map((item)=>{
-                    if(item !== "home"){
-                    return(
-                      <li key={item}>
-                        <Link href={"/" + item}>
-                          <a onClick={closeMenu}>
-                            {item.toUpperCase()}
-                          </a>
-                        </Link>
-                      </li>
-                    )
-                  } else {
-                    return(
-                      <li key={item}>
-                        <Link href={"/"}>
-                          <a onClick={closeMenu}>
-                            {item.toUpperCase()}
-                          </a>
-                        </Link>
-                      </li>
-                    )
-                  }
-                  })}
+                  {leftMenu}
                   </ul>
                   <ul>
-                  {right.item.map((item)=>{
-                    return(
-                      <li key={item}>
-                        <Link href={"/" + item}>
-                          <a onClick={closeMenu}>
-                            {item.toUpperCase()}
-                          </a>
-                        </Link>
-                      </li>
-                    )
-                  })}
+                  {rightMenu}
                 </ul>
                 <button onClick={closeMenu}>
                 </button>
@@ -77,37 +106,10 @@ export default function Nav({left, right}, {props}){
         <Sticky>
           <nav className={navStyle.container}>
             <ul className={navStyle.left}>
-              {left.item.map((item)=>{
-                if(item !== "home"){
-                return(
-                  <li key={item}>
-                    <Link href={"/" + item}>
-                      {item.toUpperCase()}
-                    </Link>
-                  </li>
-                )
-              } else {
-                return(
-                  <li key={item}>
-                    <Link href={"/"}>
-                      {item.toUpperCase()}
-                    </Link>
-                  </li>
-                )
-              }
-              })}
+              {leftMenu}
             </ul>
-
             <ul className={navStyle.right}>
-              {right.item.map((item)=>{
-                return(
-                  <li key={item}>
-                    <Link href={"/" + item}>
-                      {item.toUpperCase()}
-                    </Link>
-                  </li>
-                )
-              })}
+              {rightMenu}
             </ul>
           </nav>
         </Sticky>

@@ -13,7 +13,7 @@ export default function MyApp({ Component, pageProps }) {
   if(cookies.get("Session") !== undefined){
     try {
       jwt.verify(cookies.get("Session"), process.env.JWT_SECURE_STRING);
-      right = {"item":["console", "profile", "logout"]};
+      right = {"item":[{"console": ["Minecraft", "Terraria"]}, {"profile": ["Settings", "Discord"]}, "logout"]};
     } catch (e){
       cookies.remove("Session");
       right = {"item":["signup", "login"]};
