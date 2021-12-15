@@ -6,20 +6,30 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import Sticky from 'react-sticky-el';
-import {BrowserView, MobileView} from 'react-device-detect';
+import {BrowserView, MobileView, isBrowser} from 'react-device-detect';
 import {useEffect, useState} from 'react';
 
 import image from '../public/hamburger.svg';
-import navStyle from '../styles/Nav.module.css';
 import DropDown from './DropDown';
 
 export default function Nav({left, right}){
+  let navStyle;
+  if(isBrowser){
+    navStyle = require("../styles/NavBrowser.module.css");
+  }else{
+    navStyle = require("../styles/NavMobile.module.css");
+  }
+
   function openMenu(){
-    document.getElementById("links").style.display = "block";
+    if(!isBrowser){
+      document.getElementById("links").style.display = "block";
+    }
   }
 
   function closeMenu(){
-    document.getElementById("links").style.display = "none";
+    if(!isBrowser){
+      document.getElementById("links").style.display = "none";
+    }
   }
 
   let [leftMenu, setLeftMenu] = useState("");
@@ -55,18 +65,19 @@ export default function Nav({left, right}){
         return(
           <li key={[Object.keys(item)[0]].toString()}>
             <DropDown title={[Object.keys(item)[0]].toString().toUpperCase()}>
-              {
-                item[Object.keys(item)[0]].map((subItem)=>{
-                  try{
-                    JSON.parse(subItem).map((game)=>{
-                      console.log(game);
-                      return(
-                        <Link key={game.usr2gm_ID_PK} href={"/" + [Object.keys(item)[0]] + "?id=" + game.usr2gm_ID_PK}>
-                          {game.gm_Name + " " + game.gm_Version + " " + game.gm_Type}
-                        </Link>
-                      );
-                    });
-                  }catch (e){
+              {item[Object.keys(item)[0]].map((subItem)=>{
+                  if(typeof(subItem) === "object"){
+                    return(
+                      subItem.map((game)=>{
+                        console.log(game.gm_Name);
+                        return(
+                          <Link key={game.usr2gm_ID_PK} href={"/" + [Object.keys(item)[0]] + "?id=" + game.usr2gm_ID_PK}>
+                            {game.gm_Name + " " + game.gm_Version + " " + game.gm_Type}
+                          </Link>
+                        );
+                      })
+                    );
+                  }else{
                     return(
                       <Link key={subItem} href={"/" + [Object.keys(item)[0]] + "?id=" + subItem}>
                         {subItem}

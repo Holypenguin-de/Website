@@ -1,0 +1,42 @@
+.container{
+  margin: auto;
+  width: 95vw;
+  height: 30px;
+  border: 2px solid white;
+  background: var(--second_color);
+  box-shadow: var(--box_black_shadow_bottom);
+  position: relative;
+}
+
+.container ul{
+  margin: 7px;
+  margin-left: 0px;
+  padding-left: 0px;
+}
+
+.conteriner li:hover{
+  text-decoration: underline;
+}
+
+.container ul>li {
+  display: inline-block;
+  margin-left: 7px;
+  margin-right: 7px;
+  text-decoration: none;
+}
+
+.container ul>li>a{
+  text-decoration: none;
+}
+
+.container ul>li>*>*{
+  display: block;
+}
+
+.right{
+  float: right;
+}
+
+.left{
+  float: left;
+}

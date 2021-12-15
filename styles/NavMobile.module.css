@@ -64,7 +64,7 @@
   background: var(--second_color);
   padding-right: 20px;
   border-left: 2px solid white;
-  box-shadow: var(--box_shadow)
+  box-shadow: var(--box_shadow);
 }
 
 .links * {
@@ -78,9 +78,9 @@
 .links>button{
   width: calc(60vw - 25px);
   height: 100vh;
-  position: fixed;
-  top: -5px;
-  left: 5px;
+  position: absolute;
+  top: 1px;
+  left: calc(-60vw + 25px);
   background:white;
   background:rgba(50,50,50,0.8);
 

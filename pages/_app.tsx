@@ -4,7 +4,6 @@ import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import cookies from 'js-cookie';
 import jwt from 'jsonwebtoken';
-import App from 'next/app';
 import {jwtFetch} from '../lib/jwt';
 import {useEffect, useState} from 'react';
 
@@ -19,7 +18,7 @@ export default function MyApp({ Component, pageProps}) {
         values: {"usr_ID_PK": JSON.parse(JSON.parse(value))[0].usr_ID_PK},
         path: "/api/User/getGames"
       });
-      setRight([{"console": [res]}, {"profile": ["Settings", "Discord"]}, "logout"])
+      setRight([{"console": [JSON.parse(res)]}, {"profile": ["Settings", "Discord"]}, "logout"])
     };
     if(cookies.get("Session") !== undefined){
       try {

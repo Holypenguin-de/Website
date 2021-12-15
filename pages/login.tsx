@@ -29,7 +29,7 @@ export default function Login(){
     });
     if(res !== "Wrong password or nickname!"){
       cookies.set("Session", jwt.sign(JSON.stringify(res), process.env.JWT_SECURE_STRING));
-      router.push("/");
+      window.location.href = "/";
     } else {
       setInfo(res);
     }
