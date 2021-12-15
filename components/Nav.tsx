@@ -26,7 +26,7 @@ export default function Nav({left, right}){
   let [rightMenu, setRightMenu] = useState("");
 
   useEffect(()=>{
-    setLeftMenu(left.item.map((item)=>{
+    setLeftMenu(left.map((item)=>{
       if(item !== "home"){
       return(
         <li key={item}>
@@ -50,18 +50,29 @@ export default function Nav({left, right}){
     }
   }));
 
-    setRightMenu(right.item.map((item)=>{
+    setRightMenu(right.map((item)=>{
       if(typeof(item) === "object"){
         return(
           <li key={[Object.keys(item)[0]].toString()}>
             <DropDown title={[Object.keys(item)[0]].toString().toUpperCase()}>
               {
                 item[Object.keys(item)[0]].map((subItem)=>{
-                  return(
+                  try{
+                    JSON.parse(subItem).map((game)=>{
+                      console.log(game);
+                      return(
+                        <Link key={game.usr2gm_ID_PK} href={"/" + [Object.keys(item)[0]] + "?id=" + game.usr2gm_ID_PK}>
+                          {game.gm_Name + " " + game.gm_Version + " " + game.gm_Type}
+                        </Link>
+                      );
+                    });
+                  }catch (e){
+                    return(
                       <Link key={subItem} href={"/" + [Object.keys(item)[0]] + "?id=" + subItem}>
                         {subItem}
                       </Link>
-                  );
+                    );
+                  }
                 })
               }
             </DropDown>
@@ -79,7 +90,7 @@ export default function Nav({left, right}){
         );
       }
     }));
-  }, [left.item, right.item]);
+  }, [left, right]);
 
     return(
       <div>
