@@ -1,6 +1,9 @@
 import {executeQuery} from '../lib/db';
 import bcrypt from 'bcrypt';
 import {randomString} from '../lib/random';
+import {Games} from './Games';
+import {User2Game} from './User2Game';
+import {sleep} from '../lib/sleep';
 
 export class User{
 
@@ -103,6 +106,24 @@ export class User{
         values: [this.usr_ID_PK, this.usr_Token]
       });
       return result;
+    }catch (e){
+      return e;
+    }
+  }
+
+  public async getGames(){
+    try{
+      const usr2gm = new User2Game({"usr_ID_FK": this.usr_ID_PK});
+      const gm_IDs = await usr2gm.getByUsrId();
+      let gameList = []
+
+      await gm_IDs.forEach(async id => {
+        const games = new Games({"gm_ID_PK": id.gm_ID_FK});
+        const game = await games.getById();
+        gameList.push({usr2gm_ID_PK: id.usr2gm_ID_PK, gm_ID_PK: game[0].gm_ID_PK,gm_Name: game[0].gm_Name, gm_Version: game[0].gm_Version,usr2gm_Port: id.usr2gm_Port,gm_Type: game[0].gm_Type});
+      });
+      await sleep(5);
+      return gameList;
     }catch (e){
       return e;
     }
