@@ -1,13 +1,10 @@
 import FormBox from '../components/FormBox';
-import {useRouter} from 'next/router';
 import {useState} from 'react';
 import {jwtFetch} from '../lib/jwt';
 import cookies from 'js-cookie';
 import jwt from 'jsonwebtoken';
 
 export default function Login(){
-
-  const router = useRouter();
 
   // Create info var
   let [info, setInfo] = useState("");

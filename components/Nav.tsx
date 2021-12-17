@@ -40,7 +40,7 @@ export default function Nav({left, right}){
       if(item !== "home"){
       return(
         <li key={item}>
-          <Link href={"/" + item}>
+          <Link href={"/" + item.toLowerCase()}>
             <a onClick={closeMenu}>
               {item.toUpperCase()}
             </a>
@@ -71,7 +71,7 @@ export default function Nav({left, right}){
                       subItem.map((game)=>{
                         console.log(game.gm_Name);
                         return(
-                          <Link key={game.usr2gm_ID_PK} href={"/" + [Object.keys(item)[0]] + "?id=" + game.usr2gm_ID_PK}>
+                          <Link key={game.usr2gm_ID_PK} href={"/" + [Object.keys(item)[0]].toString().toLowerCase() + "?id=" + game.usr2gm_ID_PK}>
                             {game.gm_Name + " " + game.gm_Version + " " + game.gm_Type}
                           </Link>
                         );
@@ -79,7 +79,7 @@ export default function Nav({left, right}){
                     );
                   }else{
                     return(
-                      <Link key={subItem} href={"/" + [Object.keys(item)[0]] + "?id=" + subItem}>
+                      <Link key={subItem} href={"/" + subItem.toLowerCase()}>
                         {subItem}
                       </Link>
                     );
@@ -92,7 +92,7 @@ export default function Nav({left, right}){
       }else{
         return(
           <li key={item}>
-            <Link href={"/" + item}>
+            <Link href={"/" + item.toLowerCase()}>
               <a onClick={closeMenu}>
                 {item.toUpperCase()}
               </a>
