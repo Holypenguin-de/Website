@@ -1,10 +1,10 @@
 import FormBox from '../components/FormBox';
-import {useState} from 'react';
-import {jwtFetch} from '../lib/jwt';
+import { useState } from 'react';
+import { jwtFetch } from '../lib/jwt';
 import cookies from 'js-cookie';
 import jwt from 'jsonwebtoken';
 
-export default function Login(){
+export default function Login() {
 
   // Create info var
   let [info, setInfo] = useState("");
@@ -24,25 +24,27 @@ export default function Login(){
       values: token,
       path: "/api/User/login"
     });
-    if(res !== "Wrong password or nickname!"){
+    if (res !== "Wrong password or nickname!" && res !== "{}") {
       cookies.set("Session", jwt.sign(JSON.stringify(res), process.env.JWT_SECURE_STRING));
       window.location.href = "/";
+    } else if (res === "{}") {
+      setInfo("Something went wront!")
     } else {
       setInfo(res);
     }
   };
-  return(
+  return (
     <>
       <FormBox>
         <h1>Login</h1>
         <form onSubmit={login}>
-          <input type="text" name="usr_Nickname" required/>
+          <input type="text" name="usr_Nickname" required />
           <span>Nickname</span>
 
-          <input type="password" name="usr_Password" required/>
+          <input type="password" name="usr_Password" required />
           <span>Password</span>
 
-          <input type="submit" value="Login"/>
+          <input type="submit" value="Login" />
         </form>
         <p>{info}</p>
       </FormBox>

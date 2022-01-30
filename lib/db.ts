@@ -1,5 +1,6 @@
 // DATABASE CONFIG
 import mysql from 'serverless-mysql';
+
 const db = mysql({
   config: {
     host: process.env.MYSQL_HOST,
@@ -10,10 +11,11 @@ const db = mysql({
   }
 });
 
+
 export async function executeQuery({ query, values }) {
   try {
-    const results = await db.query(query, values);
-    await db.end();
+    const results = db.query(query, values);
+    db.end();
     return results;
   } catch (error) {
     console.log(error);
