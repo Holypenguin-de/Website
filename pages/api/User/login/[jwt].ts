@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
-import {User} from '../../../../apiclasses/User';
+import { User } from '../../../../apiclasses/User';
 
-export default async function handler(req, res){
+export default async function handler(req, res) {
   // Get data out of the jwttoken
   const values = jwt.verify(req.query.jwt, process.env.JWT_SECURE_STRING);
 

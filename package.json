@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "env MYSQL_HOST=127.0.0.1 env MYSQL_DB=holypenguin env MYSQL_USER=holypenguin env MYSQL_PASSWORD=123holypenguin! next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
