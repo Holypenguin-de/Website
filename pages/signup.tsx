@@ -15,11 +15,11 @@ export default function Signup(){
   // Register user
   const register = async event => {
     event.preventDefault();
+    let usr_Nickname = event.target.usr_Nickname.value;
     let usr_Firstname = event.target.usr_Firstname.value;
     let usr_Lastname = event.target.usr_Lastname.value;
     let usr_Password = event.target.usr_Password.value;
     let usr_Password2 = event.target.usr_Password2.value;
-    let usr_Nickname = event.target.usr_Nickname.value;
     let usr_Email = event.target.usr_Email.value;
 
     // Check usr_Password
